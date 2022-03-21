@@ -1,0 +1,1 @@
+export { default as GeneralInput } from '@components/general/GeneralInput'

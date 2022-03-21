@@ -1,0 +1,19 @@
+@mixin flex($d: true, $fd: null, $jc: null, $ai: null, $fw: null, $fg: null, $fs: null, $fb: null, $as: null)
+  @if $d
+    display: flex
+  @if $fd
+    flex-direction: $fd
+  @if $jc
+    justify-content: $jc
+  @if $ai
+    align-items: $ai
+  @if $fw
+    flex-wrap: $fw
+  @if $fg
+    flex-grow: $fg
+  @if $fs
+    flex-shrink: $fs
+  @if $fb
+    flex-basis: $fb
+  @if $as
+    align-self: $as

@@ -1,0 +1,14 @@
+@use '../../mixins' as m
+@use '../../config/Colors.module.sass' as c
+
+.container
+  margin-right: auto
+  margin-left: auto
+  padding-right: 15px
+  padding-left: 15px
+  @include m.media(phone)
+    min-width: 320px
+  @include m.media(tablet)
+    max-width: 640px
+  @include m.media(laptop, desktop)
+    max-width: 1200px

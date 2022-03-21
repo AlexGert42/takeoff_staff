@@ -1,0 +1,1 @@
+export  {store, useActions }  from './store'

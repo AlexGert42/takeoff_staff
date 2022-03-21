@@ -1,0 +1,1 @@
+export { default as SectionsLoginForm } from '@components/sections/SectionsLoginForm'

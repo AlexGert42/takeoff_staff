@@ -1,0 +1,22 @@
+@use "sass:list"
+@use "sass:map"
+@use '../config/Breakpoints.module.sass' as bp
+
+$phone: bp.$phone
+$tablet: bp.$tablet
+$laptop: bp.$laptop
+
+$bkpMin: (phone: null, tablet: $phone+1, laptop: $tablet+1, desktop: $laptop+1)
+$bkpMax: (phone: $phone, tablet: $tablet, laptop: $laptop, desktop: null)
+
+@mixin media($keys...)
+  @each $key in $keys
+    @if (map-get($bkpMin, $key) != null) and (map-get($bkpMax, $key) != null)
+      @media (min-width: map-get($bkpMin, $key)) and (max-width: map-get($bkpMax, $key))
+        @content
+    @else if (map-get($bkpMin, $key) != null) and (map-get($bkpMax, $key) == null)
+      @media (min-width: map-get($bkpMin, $key))
+        @content
+    @else if (map-get($bkpMin, $key) == null) and (map-get($bkpMax, $key) != null)
+      @media (max-width: map-get($bkpMax, $key))
+        @content

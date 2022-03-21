@@ -1,0 +1,31 @@
+@use '../../mixins' as m
+@use '../../config/Colors.module.sass' as c
+
+.container
+    padding: 20px 0
+    background-color: c.$alpha
+
+.wrapper 
+    @include m.flex($ai: center, $jc: space-between)
+
+.logo
+    @include m.flex($ai: center)
+    .icon
+        min-width: 50px
+    .text
+        margin-left: 8px
+        font-size: 35px
+        font-weight: 800
+        color: c.$beta
+
+.nav
+
+.link
+    font-size: 20px
+    padding: 10px 0
+    color: c.$beta
+    font-weight: 800
+    & + .link 
+        margin-left: 50px
+        
+

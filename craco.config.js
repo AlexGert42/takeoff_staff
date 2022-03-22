@@ -9,6 +9,7 @@ module.exports = {
             "@types": path.resolve(__dirname, "src/types"),
             "@utils": path.resolve(__dirname, "src/utils"),
             "@context": path.resolve(__dirname, "src/context"),
+            "@api": path.resolve(__dirname, "src/api"),
         }
     },
 
@@ -20,6 +21,7 @@ module.exports = {
                 "^@types(.*)$": "<rootDir>/src/types$1",
                 "^@context(.*)$": "<rootDir>/src/context$1",
                 "^@utils(.*)$": "<rootDir>/src/utils$1",
+                "^@api(.*)$": "<rootDir>/src/api$1",
             }
         }
     }

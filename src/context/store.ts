@@ -3,15 +3,17 @@ import ThunkMiddleware from 'redux-thunk';
 import { configureStore } from '@reduxjs/toolkit'
 import { useDispatch } from "react-redux";
 import { useMemo } from "react";
+//!!!
+import { authReducer } from "./login/authReducer";
+import { appReducer } from "./login/appReducer";
 
 
 
 
 
 const rootReducer = combineReducers({
-    // todolist: TodolistReducer,
-    // tasks: TasksReducer,
-    // app: AppReducer
+    auth: authReducer,
+    app: appReducer
 })
 
 

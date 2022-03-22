@@ -17,6 +17,9 @@
     "@types/react-router-dom": "^5.3.3",
     "axios": "^0.26.1",
     "classnames": "^2.3.1",
+    "concurrently": "^7.0.0",
+    "js-cookie": "^3.0.1",
+    "json-server": "^0.17.0",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-redux": "^7.2.6",
@@ -30,7 +33,9 @@
   "scripts": {
     "start": "craco start",
     "build": "craco build",
-    "test": "craco test"
+    "test": "craco test",
+    "server": "json-server server/db.json -m ./node_modules/json-server-auth -r server/routes.json -p 5000",
+    "dev": "concurrently \"yarn server\" \"yarn start\""
   },
   "eslintConfig": {
     "extends": [
@@ -49,5 +54,8 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "json-server-auth": "^2.1.0"
   }
 }

@@ -2,5 +2,14 @@
 @use '../../config/Colors.module.sass' as c
 
 .container
-    padding: 50px 
-    background: #a7a7a7
+    position: fixed
+    z-index: 100
+    width: 100%
+    height: 100vh
+    background: c.$beta
+
+.loader
+    position: absolute
+    top: 50%
+    left: 50%
+    transform: translate(-50%, -50%)

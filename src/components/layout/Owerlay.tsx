@@ -2,12 +2,12 @@ import stls from '@styles/components/layout/Owerlay.module.sass'
 import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
 import icon from '../../assets/loader.gif'
-import { useSelector } from 'react-redux'
+import { useTypeSelector } from '@utils/index'
 
 type TypeOwerlayProps = TypeClassNames 
 
 const Owerlay = ({classNames}: TypeOwerlayProps) => {
-    const {owerlay} = useSelector(state => state.app)
+    const {owerlay} = useTypeSelector(state => state.app)
     
     if (owerlay) {
         return (

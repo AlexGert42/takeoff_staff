@@ -4,9 +4,7 @@ import { TypeClassNames } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { GeneralInput } from '@components/general'
 import { useState } from 'react'
-import axios from 'axios'
-import { useDispatch } from 'react-redux'
-import { loginUser } from '@context/login/authReducer'
+import { useActions } from '@utils/index'
 
 
 type TypeSectionsLoginFormProps = TypeClassNames
@@ -17,13 +15,12 @@ type TypeLoginData = {
 }
 
 const SectionsLoginForm = ({ classNames }: TypeSectionsLoginFormProps) => {
-    const dispatch = useDispatch()
+    const { loginUser } = useActions()
     const [data, setData] = useState<TypeLoginData>()
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch(loginUser(data))
-        
+        loginUser(data)
     }
 
 

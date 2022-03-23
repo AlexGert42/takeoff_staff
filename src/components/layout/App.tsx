@@ -3,25 +3,21 @@ import { Route, Routes } from "react-router-dom";
 import { PagesLogin, PagesProfile } from "@components/pages"
 import { Header, Owerlay } from "@components/layout";
 import { useEffect } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
-import { authUser } from '@context/login/authReducer';
-
+import { useActions, useTypeSelector } from '@utils/index';
 
 
 const App = () => {
-    const dispatch = useDispatch()
-    const auth = useSelector(state => state.auth.auth)
-
+    const { auth } = useTypeSelector(state => state.auth)
+    const { authUser } = useActions()
 
     useEffect(() => {
         const data: string = localStorage.getItem('user')
-        dispatch(authUser(data)) 
+        authUser(data)
     }, [])
 
-   
     return (
         <>
-            <Owerlay/>
+            <Owerlay />
             <Header />
             <Routes>
                 <Route path="/" element={<PagesProfile />} />

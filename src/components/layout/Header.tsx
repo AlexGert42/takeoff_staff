@@ -4,17 +4,17 @@ import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { IconLogo } from '@components/icons'
-import { useDispatch, useSelector } from 'react-redux'
-import { logout } from '@context/login/authReducer'
+import { useActions, useTypeSelector } from '@utils/index'
+
 
 type TypeHeaderProps = TypeClassNames
 
 const Header = ({ classNames }: TypeHeaderProps) => {
-    const dispatch = useDispatch()
-    const {userData, auth} = useSelector(state => state.auth)
+    const { logout } = useActions()
+    const {userData, auth} = useTypeSelector(state => state.auth)
 
     const ckickHandler = () => {
-        dispatch(logout())
+        logout()
     }
     
 

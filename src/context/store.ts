@@ -1,21 +1,15 @@
-import { ActionCreatorsMapObject, bindActionCreators, combineReducers } from "redux";
-import ThunkMiddleware from 'redux-thunk';
+import { combineReducers } from "redux"
+import ThunkMiddleware from 'redux-thunk'
 import { configureStore } from '@reduxjs/toolkit'
-import { useDispatch } from "react-redux";
-import { useMemo } from "react";
-//!!!
-import { authReducer } from "./login/authReducer";
-import { appReducer } from "./login/appReducer";
-
-
-
-
+import { authReducer } from "@context/redusers/authReducer"
+import { appReducer } from "@context/redusers/appReducer"
+import { contactsReducer } from "@context/redusers/contactsReducer"
 
 const rootReducer = combineReducers({
     auth: authReducer,
-    app: appReducer
+    app: appReducer,
+    contacts: contactsReducer
 })
-
 
 
 export const store = configureStore({
@@ -24,18 +18,3 @@ export const store = configureStore({
 })
 
 export type AppRootState = ReturnType<typeof rootReducer>
-
-
-export function useActions<T extends ActionCreatorsMapObject<any>>(action: T) {
-    const dispatch = useDispatch()
-    const boundActions = useMemo(() => {
-        return bindActionCreators(action, dispatch)
-    }, [])
-    return boundActions
-}
-
-
-
-
-// @ts-ignore
-window.store = store

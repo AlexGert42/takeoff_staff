@@ -1,14 +1,14 @@
 import stls from '@styles/components/pages/PagesProfile.module.sass'
 import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
-import { useSelector } from 'react-redux'
 import { Navigate } from 'react-router-dom'
+import { useTypeSelector } from '@utils/index'
 
 
 type TypePagesProfileProps = TypeClassNames
 
 const PagesProfile = ({ classNames }: TypePagesProfileProps) => {
-    const auth = useSelector(state => state.auth.auth)
+    const { auth } = useTypeSelector(state => state.auth)
 
     if (!auth) {
         return <Navigate

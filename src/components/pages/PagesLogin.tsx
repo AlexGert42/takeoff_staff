@@ -3,13 +3,13 @@ import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
 import { SectionsLoginForm, SectionsRegisterForm } from "@components/sections"
 import { Navigate } from 'react-router-dom'
-import { useSelector } from 'react-redux'
+import { useTypeSelector } from '@utils/index'
 
 
 type TypeLoginProps = TypeClassNames
 
 const PagesLogin = ({ classNames }: TypeLoginProps) => {
-    const auth = useSelector(state => state.auth.auth)
+    const { auth } = useTypeSelector(state => state.auth)
 
     if (auth) {
         return <Navigate
@@ -18,8 +18,8 @@ const PagesLogin = ({ classNames }: TypeLoginProps) => {
     }
     return (
         <main className={cn(stls.container, classNames)}>
-            <SectionsLoginForm/>
-            <SectionsRegisterForm/>
+            <SectionsLoginForm />
+            <SectionsRegisterForm />
         </main>
     )
 }

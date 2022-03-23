@@ -4,8 +4,7 @@ import { TypeClassNames } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { GeneralInput } from '@components/general'
 import { useState } from 'react'
-import { useDispatch } from 'react-redux'
-import { registerUser } from '@context/login/authReducer'
+import { useActions } from '@utils/index'
 
 
 
@@ -20,12 +19,12 @@ type TypeLoginData = {
 }
 
 const SectionsRegisterForm = ({ classNames }: TypeSectionsRegisterFormProps) => {
-    const dispatch = useDispatch()
+    const { registerUser } = useActions()
     const [data, setData] = useState<TypeLoginData>()
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        dispatch(registerUser(data))
+        registerUser(data)
     }
 
 
@@ -33,10 +32,10 @@ const SectionsRegisterForm = ({ classNames }: TypeSectionsRegisterFormProps) => 
         <section className={cn(stls.container, classNames)}>
             <Wrapper classNames={[stls.wrapper]}>
                 <form className={stls.form} action="POST" onSubmit={submitHandler}>
-                    <GeneralInput type={'text'} change={e => setData({...data, username: e})} placeholder={'name'}/>
-                    <GeneralInput type={'text'} change={e => setData({...data, phone: e})} placeholder={'phone'}/>
-                    <GeneralInput type={'email'} change={e => setData({...data, email: e})} placeholder={'email'}/>
-                    <GeneralInput type={'password'} change={e => setData({...data, password: e})} placeholder={'pass'}/>
+                    <GeneralInput type={'text'} change={e => setData({ ...data, username: e })} placeholder={'name'} />
+                    <GeneralInput type={'text'} change={e => setData({ ...data, phone: e })} placeholder={'phone'} />
+                    <GeneralInput type={'email'} change={e => setData({ ...data, email: e })} placeholder={'email'} />
+                    <GeneralInput type={'password'} change={e => setData({ ...data, password: e })} placeholder={'pass'} />
                     <button type="submit">Send</button>
                 </form>
             </Wrapper>

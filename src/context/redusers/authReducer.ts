@@ -1,6 +1,5 @@
 import apiAuth from "@api/apiAuth"
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
-import { AxiosError } from "axios"
 import Cookies from 'js-cookie'
 
 

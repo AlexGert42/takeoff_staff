@@ -5,12 +5,12 @@ import { authReducer } from "@context/redusers/authReducer"
 import { appReducer } from "@context/redusers/appReducer"
 import { contactsReducer } from "@context/redusers/contactsReducer"
 
+
 const rootReducer = combineReducers({
     auth: authReducer,
     app: appReducer,
     contacts: contactsReducer
 })
-
 
 export const store = configureStore({
     reducer: rootReducer,

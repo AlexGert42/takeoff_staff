@@ -1,73 +1,55 @@
 {
   "users": [
     {
-      "email": "alex.4324324324324@gmail.com",
-      "password": "$2a$10$U7asSYYvWcw0mw8HyRBMCepjjSUH.Dkoy.etcL8O0sal7Ck3zslxO",
-      "id": 1
-    },
-    {
       "email": "alex.gert1812@gmail.com",
       "password": "$2a$10$QdCbg1gzKr1JJkKc82KB9OHjgDtu7h2K4A2E/4aXpe1uqE9ca/BGm",
       "username": "wwe",
       "phone": "ew",
       "id": 2
-    },
-    {
-      "email": "alex@gmail.com",
-      "password": "$2a$10$yUXJRE5Z17OGUy5L9P8qX.3lAUZYpjYZFueYSEsFzNnLNY/tSKYoq",
-      "username": "root",
-      "phone": "0658695896",
-      "id": 3
-    },
-    {
-      "email": "root@gmail.com",
-      "password": "$2a$10$hlO//kpbSoX5jLcQ12QqJ.hOAB.rnPRrQbtLARYUL3fc8bNgRSQoi",
-      "id": 4
-    },
-    {
-      "email": "alex.fdfdfd@gmail.com",
-      "password": "$2a$10$R90utXBDl76Xb7Ri8UIDW.pPVuvJPMcXZRq8xoERSjuwYsDbVQrfa",
-      "username": "afsf",
-      "phone": "fdf",
-      "id": 5
-    },
-    {
-      "email": "alex.3435454545323253535@gmail.com",
-      "password": "$2a$10$qfI9E48Qh59mF7PshJegE.6t/vzogJZ5cX07zrPhCj77V97ld9WXa",
-      "username": "yretryetyrtewyutruyetruy",
-      "phone": "ereterewrewrer",
-      "id": 6
-    },
-    {
-      "email": "alex.gert@gmail.com",
-      "password": "$2a$10$1HhYr6/l.6ujZLPb/iam/eBD.UloO4EFh6ANYJ10xBDI1QCdXBiO2",
-      "username": "343",
-      "phone": "4343",
-      "id": 7
     }
   ],
   "contacts": [
     {
       "id": 1,
       "name": "test1",
-      "phone": "111",
+      "phone": "9999999999",
+      "organization": "work",
       "userId": 2
     },
     {
       "id": 2,
-      "name": "test12",
-      "phone": "222",
+      "name": "test1ewrer",
+      "phone": "9999999999erewr",
+      "organization": "workewrewr",
       "userId": 2
     },
     {
-      "id": 3,
-      "name": "test3",
-      "phone": "333"
+      "id": 4,
+      "name": "test1dsadsadd",
+      "phone": "9999999999sadsad",
+      "organization": "workdsdsad",
+      "userId": 2
     },
     {
-      "id": 4,
-      "name": "test4",
-      "phone": "444"
+      "userId": 2,
+      "mame": "321323",
+      "phone": "4756745674",
+      "organization": "ttwewqet",
+      "id": 5
+    },
+    {
+      "name": "sdsad",
+      "phone": "sadsadsa",
+      "organization": "dsadsd",
+      "userId": "2",
+      "id": 7
+    },
+    {
+      "name": "qq",
+      "phone": "12345",
+      "organization": "ww",
+      "userId": "2",
+      "id": 8
     }
   ]
 }

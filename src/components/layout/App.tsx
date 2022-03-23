@@ -8,12 +8,16 @@ import { useActions, useTypeSelector } from '@utils/index';
 
 const App = () => {
     const { auth } = useTypeSelector(state => state.auth)
-    const { authUser } = useActions()
+    const { contacts } = useTypeSelector(state => state.contacts)
+    const { authUser, getContacts } = useActions()
 
     useEffect(() => {
         const data: string = localStorage.getItem('user')
-        authUser(data)
-    }, [])
+        if (data) {
+            authUser(data)
+            getContacts(data)
+        }
+    }, [contacts])
 
     return (
         <>

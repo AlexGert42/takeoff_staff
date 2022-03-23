@@ -3,6 +3,7 @@ import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
 import { Navigate } from 'react-router-dom'
 import { useTypeSelector } from '@utils/index'
+import { SectionsListContacts, SectionsSearchContacts, SectionsSetFormContact } from '@components/sections'
 
 
 type TypePagesProfileProps = TypeClassNames
@@ -18,7 +19,9 @@ const PagesProfile = ({ classNames }: TypePagesProfileProps) => {
 
     return (
         <main className={cn(stls.container, classNames)}>
-            Profile
+            <SectionsSearchContacts/>
+            <SectionsSetFormContact/>
+            <SectionsListContacts/>
         </main>
     )
 }

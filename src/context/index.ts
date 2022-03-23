@@ -2,6 +2,7 @@ export { store } from '@context/store'
 
 import { authUser, loginUser, logout, registerUser } from '@context/redusers/authReducer'
 import { ActiveOwerlay } from '@context/redusers/appReducer'
+import { getContacts, removeContact, editContact, setContact, searchContact } from '@context/redusers/contactsReducer'
 
 
 export const ActionCreators = {
@@ -9,5 +10,10 @@ export const ActionCreators = {
     loginUser,
     logout,
     registerUser,
-    ActiveOwerlay
+    ActiveOwerlay,
+    getContacts,
+    removeContact,
+    editContact,
+    setContact,
+    searchContact,
 }

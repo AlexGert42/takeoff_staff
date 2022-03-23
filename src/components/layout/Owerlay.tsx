@@ -1,7 +1,7 @@
 import stls from '@styles/components/layout/Owerlay.module.sass'
 import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
-import icon from '../../assets/loader.gif'
+import icon from '@assets/loader.gif'
 import { useTypeSelector } from '@utils/index'
 
 type TypeOwerlayProps = TypeClassNames 

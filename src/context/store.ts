@@ -7,9 +7,10 @@ import { contactsReducer } from "@context/redusers/contactsReducer"
 
 
 const rootReducer = combineReducers({
+    contacts: contactsReducer,
     auth: authReducer,
-    app: appReducer,
-    contacts: contactsReducer
+    app: appReducer
+   
 })
 
 export const store = configureStore({

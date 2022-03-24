@@ -4,9 +4,9 @@ import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 
 
-export const getContacts = createAsyncThunk('auth/getContacts', async (id: string, { getState, dispatch, rejectWithValue }) => {
-    try {
-        const res = await apiContacts.getContacts(id)
+export const getContacts = createAsyncThunk('auth/getContacts', async (data: any, { getState, dispatch, rejectWithValue }) => {
+    try { 
+        const res = await apiContacts.getContacts(data)
         if (res.status === 200) {
             return { contacts: res.data }
         }
@@ -97,6 +97,9 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(getContacts.fulfilled, (state, action) => {
+            if (!action.payload.contacts) {
+                return state
+            }
             return {
                 ...state,
                 contacts: action.payload.contacts

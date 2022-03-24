@@ -1,9 +1,12 @@
 import apiAuth from "@api/apiAuth"
+import { AppRootState } from "@context/store"
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import Cookies from 'js-cookie'
 
 
 import { ActiveOwerlay } from "./appReducer"
+import { getContacts } from "./contactsReducer"
+
 
 
 
@@ -17,7 +20,9 @@ export const authUser = createAsyncThunk('auth/authUser', async (id: string, { g
                 phone: res.data.phone,
                 username: res.data.username
             }
+            
             return { user: data }
+
         }
         return { user: null }
     } catch (error) {
@@ -31,8 +36,6 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (data: any, { 
         dispatch(ActiveOwerlay({ value: true }))
         const res = await apiAuth.loginUser(data)
         if (res.status === 200) {
-            Cookies.set('jwt', res.data.accessToken)
-            localStorage.setItem('user', res.data.user.id)
             dispatch(ActiveOwerlay({ value: false }))
             return { user: res.data.user }
         }
@@ -68,12 +71,14 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (data: a
 interface TypeInitialState {
     userData: any | null
     auth: boolean
+    token: string
 }
 
 
 const initialState = {
     userData: null,
-    auth: false
+    auth: false,
+    token: ''
 } as TypeInitialState
 
 
@@ -104,6 +109,7 @@ const slice = createSlice({
                 return {
                     ...state,
                     auth: true,
+                    // token: action.payload.token,
                     userData: action.payload.user
                 }
             }

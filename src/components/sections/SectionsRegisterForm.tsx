@@ -10,17 +10,22 @@ import { useActions } from '@utils/index'
 
 type TypeSectionsRegisterFormProps = TypeClassNames
 
-type TypeLoginData = {
-    username?: string
-    phone?: string
-    email?: string
-    password?: string
+interface TypeLoginData {
+    username: string
+    phone: string
+    email: string
+    password: string
 
 }
 
 const SectionsRegisterForm = ({ classNames }: TypeSectionsRegisterFormProps) => {
     const { registerUser } = useActions()
-    const [data, setData] = useState<TypeLoginData>()
+    const [data, setData] = useState<TypeLoginData>({
+        username: '',
+        phone: '',
+        email: '',
+        password: ''
+    })
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
@@ -34,7 +39,7 @@ const SectionsRegisterForm = ({ classNames }: TypeSectionsRegisterFormProps) => 
                 <form className={stls.form} action="POST" onSubmit={submitHandler}>
                     <GeneralInput type={'text'} change={e => setData({ ...data, username: e })} placeholder={'name'} />
                     <GeneralInput type={'text'} change={e => setData({ ...data, phone: e })} placeholder={'phone'} />
-                    <GeneralInput type={'email'} change={e => setData({ ...data, email: e })} placeholder={'email'} />
+                    <GeneralInput type={'text'} change={e => setData({ ...data, email: e })} placeholder={'email'} />
                     <GeneralInput type={'password'} change={e => setData({ ...data, password: e })} placeholder={'pass'} />
                     <button type="submit">Send</button>
                 </form>

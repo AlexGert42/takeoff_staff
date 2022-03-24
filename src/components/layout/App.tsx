@@ -2,8 +2,9 @@ import stls from '@styles/components/layout/App.module.sass'
 import { Route, Routes } from "react-router-dom";
 import { PagesLogin, PagesProfile } from "@components/pages"
 import { Header, Owerlay } from "@components/layout";
-import { useEffect } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useActions, useTypeSelector } from '@utils/index';
+import React from 'react';
 
 
 const App = () => {
@@ -16,8 +17,8 @@ const App = () => {
         if (data) {
             authUser(data)
             getContacts(data)
-        }
-    }, [contacts])
+        } 
+    }, [auth])
 
     return (
         <>

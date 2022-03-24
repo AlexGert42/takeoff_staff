@@ -6,50 +6,43 @@
       "username": "wwe",
       "phone": "ew",
       "id": 2
+    },
+    {
+      "email": "root@gmail.com",
+      "password": "$2a$10$UGwlhEYBT8cDlfZfq7ciSefs9ZG1K5UcuBE7Ag38hqd9qcqHtmAye",
+      "username": "root",
+      "phone": "9323232132",
+      "id": 3
     }
   ],
   "contacts": [
     {
-      "id": 1,
-      "name": "test1",
-      "phone": "9999999999",
-      "organization": "work",
-      "userId": 2
+      "name": "dsadsa",
+      "phone": "dsadsad",
+      "organization": "sadsad",
+      "userId": "2",
+      "id": 2
     },
     {
-      "id": 2,
-      "name": "test1ewrer",
-      "phone": "9999999999erewr",
-      "organization": "workewrewr",
-      "userId": 2
+      "name": "11dsaddfsfdsf",
+      "phone": "111sadsad",
+      "organization": "111sdsad",
+      "userId": "2",
+      "id": 3
     },
     {
-      "id": 4,
-      "name": "test1dsadsadd",
-      "phone": "9999999999sadsad",
-      "organization": "workdsdsad",
-      "userId": 2
-    },
-    {
-      "userId": 2,
-      "mame": "321323",
-      "phone": "4756745674",
-      "organization": "ttwewqet",
+      "name": "fffdsfdsf",
+      "phone": "dsfdsfdsfdsf",
+      "organization": "dsfdsfsdf",
+      "userId": "3",
       "id": 5
     },
     {
-      "name": "sdsad",
-      "phone": "sadsadsa",
-      "organization": "dsadsd",
+      "name": "1121",
+      "phone": "AsA321312312",
+      "organization": "SasAS312321",
       "userId": "2",
-      "id": 7
-    },
-    {
-      "name": "qq",
-      "phone": "12345",
-      "organization": "ww",
-      "userId": "2",
-      "id": 8
+      "id": 6
     }
   ]
 }

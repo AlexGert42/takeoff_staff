@@ -33,8 +33,8 @@ const apiContacts = {
     setContact(data: any) {
         return instance.post('contacts/', data)
     },
-    searchContact(data: any) {
-        return instance.get(`contacts?${data.currentSelect}=${data.data}`)
+    searchContact(data: any, userId: number) {
+        return instance.get(`contacts?userId=${userId}&${data.currentSelect}_like=${data.data}`)
     },
     
 }

@@ -13,16 +13,14 @@ export const authUser = createAsyncThunk('auth/authUser', async (id: string, { g
         if (res.status === 200) {
             const data = {
                 email: res.data.email,
-                id:  res.data.id,
+                id: res.data.id,
                 phone: res.data.phone,
                 username: res.data.username
             }
             return { user: data }
         }
         return { user: null }
-
     } catch (error) {
-
         return rejectWithValue({ errors: error })
     }
 })
@@ -30,15 +28,15 @@ export const authUser = createAsyncThunk('auth/authUser', async (id: string, { g
 
 export const loginUser = createAsyncThunk('auth/loginUser', async (data: any, { getState, dispatch, rejectWithValue }) => {
     try {
-        dispatch(ActiveOwerlay({value: true}))
+        dispatch(ActiveOwerlay({ value: true }))
         const res = await apiAuth.loginUser(data)
         if (res.status === 200) {
             Cookies.set('jwt', res.data.accessToken)
             localStorage.setItem('user', res.data.user.id)
-            dispatch(ActiveOwerlay({value: false}))
+            dispatch(ActiveOwerlay({ value: false }))
             return { user: res.data.user }
         }
-        dispatch(ActiveOwerlay({value: false}))
+        dispatch(ActiveOwerlay({ value: false }))
         return { user: null }
     } catch (error) {
 
@@ -48,16 +46,16 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (data: any, { 
 
 export const registerUser = createAsyncThunk('auth/registerUser', async (data: any, { getState, dispatch, rejectWithValue }) => {
     try {
-        dispatch(ActiveOwerlay({value: true}))
+        dispatch(ActiveOwerlay({ value: true }))
         const res = await apiAuth.registerUser(data)
         if (res.status === 201) {
             Cookies.set('jwt', res.data.accessToken)
             localStorage.setItem('user', res.data.user.id)
-            dispatch(ActiveOwerlay({value: false}))
+            dispatch(ActiveOwerlay({ value: false }))
             return { user: res.data.user }
         }
-        dispatch(ActiveOwerlay({value: false}))
-        return { user: null}
+        dispatch(ActiveOwerlay({ value: false }))
+        return { user: null }
 
     } catch (error) {
 
@@ -92,25 +90,33 @@ const slice = createSlice({
     },
     extraReducers: (builder) => {
         builder.addCase(registerUser.fulfilled, (state, action) => {
-            return {
-                ...state,
-                auth: true,
-                userData: action.payload.user
+            if (action.payload.user) {
+                return {
+                    ...state,
+                    auth: true,
+                    userData: action.payload.user
+                }
             }
+
         });
         builder.addCase(loginUser.fulfilled, (state, action) => {
-            return {
-                ...state,
-                auth: true,
-                userData: action.payload.user
+            if (action.payload.user) {
+                return {
+                    ...state,
+                    auth: true,
+                    userData: action.payload.user
+                }
             }
         });
         builder.addCase(authUser.fulfilled, (state, action) => {
-            return {
-                ...state,
-                auth: true,
-                userData: action.payload.user
+            if (action.payload.user) {
+                return {
+                    ...state,
+                    auth: true,
+                    userData: action.payload.user
+                }
             }
+
         });
 
     }
@@ -119,4 +125,4 @@ const slice = createSlice({
 
 export const authReducer = slice.reducer
 
-export const {logout} = slice.actions
+export const { logout } = slice.actions

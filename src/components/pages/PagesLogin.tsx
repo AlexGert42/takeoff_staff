@@ -13,10 +13,7 @@ const PagesLogin = ({ classNames }: TypeLoginProps) => {
     const { authUser, getContacts } = useActions()
 
     if (auth) {
-        return <Navigate
-
-            to={"/"}
-        />
+        return <Navigate to={"/"}/>
     }
     return (
         <main className={cn(stls.container, classNames)}>

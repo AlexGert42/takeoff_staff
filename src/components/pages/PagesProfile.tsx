@@ -11,14 +11,11 @@ type TypePagesProfileProps = TypeClassNames
 
 const PagesProfile = ({ classNames }: TypePagesProfileProps) => {
     const { auth, userData } = useTypeSelector(state => state.auth)
-    const { contacts } = useTypeSelector(state => state.contacts)
-    const { authUser, getContacts } = useActions()
+    const { getContacts } = useActions()
 
     useEffect(() => {
-        const data: string = localStorage.getItem('user')
-
-        if (data) {
-            // getContacts(data)
+        if (userData) {
+            getContacts(userData.id)
         } 
     }, [])
 

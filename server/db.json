@@ -8,28 +8,28 @@
       "id": 2
     },
     {
-      "email": "root@gmail.com",
-      "password": "$2a$10$UGwlhEYBT8cDlfZfq7ciSefs9ZG1K5UcuBE7Ag38hqd9qcqHtmAye",
-      "username": "root",
-      "phone": "9323232132",
+      "email": "alex.111@gmail.com",
+      "password": "$2a$10$Nd7MAcY58MlKPopFM3530O3KzGzebTuqMiBj5ddh0Kl7mj3Ui1vWi",
+      "username": "11",
+      "phone": "11",
       "id": 3
     },
     {
-      "email": "alrewrerwer@gmail.com",
-      "password": "$2a$10$R0LYQSy1jrqm0JEY3dN9xe9Jb50Snll0HyE7uxqj2BfpvSWVnH1zy",
-      "username": "eqewr",
-      "phone": "ewrewrew",
+      "email": "alex.3434@gmail.com",
+      "password": "$2a$10$tI.Y0M94REiI1fZSr0nEMuygUfMKArOEqNKtjrW7Lk0K4Mt0XP52a",
+      "username": "111",
+      "phone": "111",
       "id": 4
+    },
+    {
+      "email": "46436464.gert1812@gmail.com",
+      "password": "$2a$10$zZXB4MHSEX3TiNKo/e1xEebeZTMLyRiHg4DJ4siqOqVOH7.1e/dQ6",
+      "username": "436",
+      "phone": "4364364",
+      "id": 5
     }
   ],
   "contacts": [
-    {
-      "name": "11dsaddfsfdsf",
-      "phone": "111sadsad",
-      "organization": "111sdsad",
-      "userId": "2",
-      "id": 3
-    },
     {
       "name": "fffdsfdsf",
       "phone": "dsfdsfdsfdsf",
@@ -45,18 +45,25 @@
       "id": 7
     },
     {
-      "name": "121212121",
-      "phone": "wrewrew",
-      "organization": "rewrewr",
-      "userId": "2",
+      "name": "dfdsf",
+      "phone": "dfdsf",
+      "organization": "dsfdsf",
+      "userId": "4",
       "id": 9
     },
     {
-      "name": "efrr",
-      "phone": "rfgregerg",
-      "organization": "rgregreg",
+      "name": "rewr",
+      "phone": "ewrewre",
+      "organization": "wrere",
       "userId": "2",
       "id": 10
+    },
+    {
+      "name": "rewr43432434",
+      "phone": "ewrewre",
+      "organization": "wrere",
+      "userId": "2",
+      "id": 11
     }
   ]
 }

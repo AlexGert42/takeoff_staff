@@ -1,10 +1,10 @@
+import { TypeContactData, TypeSearchContactData, TypeSetDataContact } from '@types/index';
 import { apiContacts } from "@api/index"
 import { AppRootState } from "@context/store"
-import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
 
 
-
-export const getContacts = createAsyncThunk('auth/getContacts', async (data: any, { getState, dispatch, rejectWithValue }) => {
+export const getContacts = createAsyncThunk('auth/getContacts', async (data: string, { getState, dispatch, rejectWithValue }) => {
     try { 
         const res = await apiContacts.getContacts(data)
         if (res.status === 200) {
@@ -15,7 +15,6 @@ export const getContacts = createAsyncThunk('auth/getContacts', async (data: any
         return rejectWithValue({ errors: error })
     }
 })
-
 
 export const removeContact = createAsyncThunk('auth/removeContact', async (id: number, { getState, dispatch, rejectWithValue }) => {
     try {
@@ -29,7 +28,7 @@ export const removeContact = createAsyncThunk('auth/removeContact', async (id: n
     }
 })
 
-export const editContact = createAsyncThunk('auth/editContact', async (data: any, { getState, dispatch, rejectWithValue }) => {
+export const editContact = createAsyncThunk('auth/editContact', async (data: TypeContactData, { getState, dispatch, rejectWithValue }) => {
     try {
         const res = await apiContacts.editContact(data)
         if (res.status === 200) {
@@ -42,7 +41,7 @@ export const editContact = createAsyncThunk('auth/editContact', async (data: any
     }
 })
 
-export const setContact = createAsyncThunk('auth/setContact', async (data: any, { getState, dispatch, rejectWithValue }) => {
+export const setContact = createAsyncThunk('auth/setContact', async (data: TypeSetDataContact, { getState, dispatch, rejectWithValue }) => {
     const newContact = { ...data, userId: localStorage.getItem('user') }
     try {
         const res = await apiContacts.setContact(newContact)
@@ -55,7 +54,7 @@ export const setContact = createAsyncThunk('auth/setContact', async (data: any, 
     }
 })
 
-export const searchContact = createAsyncThunk('auth/searchContact', async (data: any, { getState, dispatch, rejectWithValue }) => {
+export const searchContact = createAsyncThunk('auth/searchContact', async (data: TypeSearchContactData, { getState, dispatch, rejectWithValue }) => {
     const state = getState() as AppRootState
     try {
         const res = await apiContacts.searchContact(data, state.auth.userData.id)
@@ -69,25 +68,13 @@ export const searchContact = createAsyncThunk('auth/searchContact', async (data:
 })
 
 
-
-
-type TypeContacts = {
-    name: string
-    phone: string
-    organization: string
-    id: number
-    userId: number
-}
-
 interface TypeInitialState {
-    contacts: null | Array<TypeContacts>
+    contacts: null | Array<TypeContactData>
 }
-
 
 const initialState = {
     contacts: null
 } as TypeInitialState
-
 
 const slice = createSlice({
     name: 'contacts',

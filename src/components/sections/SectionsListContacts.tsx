@@ -1,25 +1,32 @@
 import stls from '@styles/components/sections/SectionsListContacts.module.sass'
+import { useState } from 'react'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames, TypeContactData } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { useActions, useTypeSelector } from '@utils/index'
 import { IconCross, IconEditor } from '@components/icons'
 import { GeneralInputText } from '@components/general'
-import { useState } from 'react'
 
+
+
+interface TypeEditData {
+    phone: string
+    name: string
+    organization: string
+}
 
 type TypeSectionsListContactsProps = TypeClassNames
-
-
 
 const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => {
     const { removeContact, editContact } = useActions()
     const { contacts } = useTypeSelector(state => state.contacts)
-    
     const [editor, setEditor] = useState<boolean>(false)
     const [id, setId] = useState<number>()
-    const [data, setData] = useState({})
-
+    const [data, setData] = useState<TypeEditData>({
+        phone: '',
+        name: '',
+        organization: ''
+    })
 
     const clickHandlerRemove = (id: number) => {
         removeContact(id)
@@ -30,13 +37,10 @@ const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => 
         setEditor(true)
     }
 
-    const clickHandlerSuccess = (item: any) => {
+    const clickHandlerSuccess = (item: TypeContactData) => {
         editContact({ ...item, ...data })
         setEditor(false)
     }
-
-
-
 
 
     return (

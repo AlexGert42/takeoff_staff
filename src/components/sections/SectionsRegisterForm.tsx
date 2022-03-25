@@ -1,6 +1,6 @@
 import stls from '@styles/components/sections/SectionsRegisterForm.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames, TypeRegisterData } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { GeneralInput } from '@components/general'
 import { useState } from 'react'
@@ -10,17 +10,11 @@ import { useActions } from '@utils/index'
 
 type TypeSectionsRegisterFormProps = TypeClassNames
 
-interface TypeLoginData {
-    username: string
-    phone: string
-    email: string
-    password: string
 
-}
 
 const SectionsRegisterForm = ({ classNames }: TypeSectionsRegisterFormProps) => {
     const { registerUser } = useActions()
-    const [data, setData] = useState<TypeLoginData>({
+    const [data, setData] = useState<TypeRegisterData>({
         username: '',
         phone: '',
         email: '',

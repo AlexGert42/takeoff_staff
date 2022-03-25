@@ -1,17 +1,13 @@
 import apiAuth from "@api/apiAuth"
-import { AppRootState } from "@context/store"
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import Cookies from 'js-cookie'
-
-
-import { ActiveOwerlay } from "./appReducer"
-import { getContacts } from "./contactsReducer"
-
-
+import { ActionCreators }  from "@context/index"
+import { TypeRegisterData, TypeLoginData } from '@/types/index'
 
 
 export const authUser = createAsyncThunk('auth/authUser', async (id: string, { getState, dispatch, rejectWithValue }) => {
     try {
+        dispatch(ActionCreators.ActiveOwerlay({ value: true }))
         const res = await apiAuth.authUser(id)
         if (res.status === 200) {
             const data = {
@@ -20,67 +16,60 @@ export const authUser = createAsyncThunk('auth/authUser', async (id: string, { g
                 phone: res.data.phone,
                 username: res.data.username
             }
-            
+            dispatch(ActionCreators.ActiveOwerlay({ value: false }))
             return { user: data }
-
         }
+        dispatch(ActionCreators.ActiveOwerlay({ value: false }))
         return { user: null }
     } catch (error) {
+        dispatch(ActionCreators.ActiveOwerlay({ value: false }))
         return rejectWithValue({ errors: error })
     }
 })
 
-
-export const loginUser = createAsyncThunk('auth/loginUser', async (data: any, { getState, dispatch, rejectWithValue }) => {
+export const loginUser = createAsyncThunk('auth/loginUser', async (data: TypeLoginData, { getState, dispatch, rejectWithValue }) => {
     try {
-        dispatch(ActiveOwerlay({ value: true }))
+        dispatch(ActionCreators.ActiveOwerlay({ value: true }))
         const res = await apiAuth.loginUser(data)
         if (res.status === 200) {
-            dispatch(ActiveOwerlay({ value: false }))
+            dispatch(ActionCreators.ActiveOwerlay({ value: false }))
             return { user: res.data.user }
         }
-        dispatch(ActiveOwerlay({ value: false }))
+        dispatch(ActionCreators.ActiveOwerlay({ value: false }))
         return { user: null }
     } catch (error) {
-
+        dispatch(ActionCreators.ActiveOwerlay({ value: false }))
         return rejectWithValue({ errors: error })
     }
 })
 
-export const registerUser = createAsyncThunk('auth/registerUser', async (data: any, { getState, dispatch, rejectWithValue }) => {
+export const registerUser = createAsyncThunk('auth/registerUser', async (data: TypeRegisterData, { getState, dispatch, rejectWithValue }) => {
     try {
-        dispatch(ActiveOwerlay({ value: true }))
+        dispatch(ActionCreators.ActiveOwerlay({ value: true }))
         const res = await apiAuth.registerUser(data)
         if (res.status === 201) {
-            Cookies.set('jwt', res.data.accessToken)
-            localStorage.setItem('user', res.data.user.id)
-            dispatch(ActiveOwerlay({ value: false }))
+            dispatch(ActionCreators.ActiveOwerlay({ value: false }))
             return { user: res.data.user }
         }
-        dispatch(ActiveOwerlay({ value: false }))
+        dispatch(ActionCreators.ActiveOwerlay({ value: false }))
         return { user: null }
-
     } catch (error) {
-
+        dispatch(ActionCreators.ActiveOwerlay({ value: false }))
         return rejectWithValue({ errors: error })
     }
 })
-
 
 
 interface TypeInitialState {
-    userData: any | null
+    userData: TypeRegisterData | null
     auth: boolean
     token: string
 }
 
-
 const initialState = {
     userData: null,
-    auth: false,
-    token: ''
+    auth: false
 } as TypeInitialState
-
 
 const slice = createSlice({
     name: 'auth',
@@ -102,14 +91,12 @@ const slice = createSlice({
                     userData: action.payload.user
                 }
             }
-
         });
         builder.addCase(loginUser.fulfilled, (state, action) => {
             if (action.payload.user) {
                 return {
                     ...state,
                     auth: true,
-                    // token: action.payload.token,
                     userData: action.payload.user
                 }
             }
@@ -122,9 +109,7 @@ const slice = createSlice({
                     userData: action.payload.user
                 }
             }
-
         });
-
     }
 })
 

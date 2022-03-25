@@ -1,23 +1,17 @@
 import stls from '@styles/components/sections/SectionsSetFormContact.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames, TypeSetDataContact } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { GeneralInput } from '@components/general'
 import { useState } from 'react'
 import { useActions } from '@utils/index'
 
-interface TypeDataContact {
-    name: string
-    phone: string,
-    organization: string
-}
 
 type TypeSectionsSetFormContactProps = TypeClassNames
 
-
 const SectionsSetFormContact = ({ classNames }: TypeSectionsSetFormContactProps) => {
     const { setContact } = useActions()
-    const [data, setData] = useState<TypeDataContact>({
+    const [data, setData] = useState<TypeSetDataContact>({
         name: '',
         phone: '',
         organization: ''

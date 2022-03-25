@@ -9,14 +9,17 @@ import { useActions } from '@utils/index'
 
 type TypeSectionsLoginFormProps = TypeClassNames
 
-type TypeLoginData = {
-    email?: string
-    password?: string
+interface TypeLoginData {
+    email: string
+    password: string
 }
 
 const SectionsLoginForm = ({ classNames }: TypeSectionsLoginFormProps) => {
     const { loginUser } = useActions()
-    const [data, setData] = useState<TypeLoginData>()
+    const [data, setData] = useState<TypeLoginData>({
+        email: '',
+        password: ''
+    })
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()

@@ -2,30 +2,34 @@
 @use '../../config/Colors.module.sass' as c
 
 .container
-    padding: 20px 0
+    padding: 20px 0 10px 0
     background-color: c.$alpha
+    box-shadow: 0px 4px 20px c.$alpha
 
 .wrapper 
     @include m.flex($ai: center, $jc: space-between)
 
 .logo
     @include m.flex($ai: center)
-.icon
-    min-width: 50px
-.text
-    margin-left: 8px
-    font-size: 35px
-    font-weight: 800
-    color: c.$beta
+    width: 100px
+    height: 60px
 
+
+
+////////////
 .nav
+    @include m.flex($ai: flex-end)
 
-.link
+.username
+    margin-bottom: 5px
+    color: c.$psi
     font-size: 20px
-    padding: 10px 0
-    color: c.$beta
-    font-weight: 800
-    & + .link 
-        margin-left: 50px
-        
+    margin-right: 30px
+    text-transform: capitalize
+
+.btn 
+    cursor: pointer
+    font-size: 30px
+    background-color: #ffffff00
+    color: c.$psi
 

@@ -2,10 +2,52 @@
 @use '../../config/Colors.module.sass' as c
 
 .container 
-    padding-top: 90px 
-
+    padding-top: 40px 
 
 .form
     margin: 0 auto
-    max-width: 500px
     @include m.flex($fd: column)
+    @include m.media(phone, tablet)
+        width: none
+    @include m.media(laptop, desktop)
+        max-width: 405px
+
+.input
+    & + .input
+        margin-top: 20px
+
+.icon
+    position: absolute
+    bottom: 14px
+    left: 17px
+    width: 17px
+
+
+.decorLine
+    position: relative
+    color: c.$psi
+    text-align: center
+    &::before, &::after
+        content: ''
+        position: absolute
+        top: 50%
+        transform: translateY(-50%)
+        width: 45%
+        height: 1px
+        background-color: c.$psi
+    &::before
+        left: 55%
+    &::after
+        right: 55%
+
+.btnCreate
+    margin: 40px 0 
+    color: c.$psi
+    background-color: c.$alpha
+
+.btnLogin
+    margin-top: 40px
+    color: c.$psi
+    background-color: c.$delta
+
+        

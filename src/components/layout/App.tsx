@@ -19,14 +19,14 @@ const App = () => {
   
 
     return (
-        <>
+        <div className={stls.container}>
             <Owerlay />
             <Header />
             <Routes>
-                <Route path="/" element={<PagesProfile />} />
-                <Route path="/login" element={<PagesLogin />} />
+                <Route path="/" element={<PagesProfile classNames={[stls.fonePicture]} />} />
+                <Route path="/login" element={<PagesLogin classNames={[stls.fonePicture]} />} />
             </Routes>
-        </>
+        </div>
     )
 }
 

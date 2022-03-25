@@ -1,24 +1,34 @@
 import stls from '@styles/components/pages/PagesLogin.module.sass'
 import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
-import { SectionsLoginForm, SectionsRegisterForm } from "@components/sections"
+import { SectionsLoginForm, SectionsRegisterForm, SectionsWelcome } from "@components/sections"
 import { Navigate } from 'react-router-dom'
 import { useActions, useTypeSelector } from '@utils/index'
+import { useState } from 'react'
 
 
 type TypeLoginProps = TypeClassNames
 
 const PagesLogin = ({ classNames }: TypeLoginProps) => {
     const { auth } = useTypeSelector(state => state.auth)
-    const { authUser, getContacts } = useActions()
+    // const { authUser, getContacts } = useActions()
+
+    const [register, setRegister] = useState<boolean>(false)
+
+
 
     if (auth) {
-        return <Navigate to={"/"}/>
+        return <Navigate to={"/"} />
     }
     return (
         <main className={cn(stls.container, classNames)}>
-            <SectionsLoginForm />
-            <SectionsRegisterForm />
+            <SectionsWelcome classNames={register ? stls.registerTop : stls.loginTop}/>
+            {
+                register ?
+                    <SectionsRegisterForm setRegister={setRegister}/>
+                    :
+                    <SectionsLoginForm setRegister={setRegister}/>
+            }
         </main>
     )
 }

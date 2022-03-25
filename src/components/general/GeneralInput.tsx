@@ -1,35 +1,49 @@
 import stls from '@styles/components/general/GeneralInput.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeChildren, TypeClassNames } from "@types/index"
+import { useMask } from 'react-mask-field'
 
 
-type TypeGeneralInputProps = TypeClassNames & {
+type TypeGeneralInputProps = TypeClassNames & TypeChildren & {
     placeholder?: string
-    change: (e: string) => void
+    change?: (e: string) => void
     type: 'text' | 'password' | 'email' | 'tel'
+    autoComplete?: 'new-password' | 'off'
 }
 
-const GeneralInput = ({ classNames, placeholder, change, type }: TypeGeneralInputProps) => {
+const GeneralInput = ({ classNames, children,  placeholder, change, type, autoComplete }: TypeGeneralInputProps) => {
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
-        change(e.target.value)
+        change && change(e.target.value)
     }
-    return <>
-        {
-            type === 'tel' ? <input
-                className={cn([stls.container], classNames)}
-                onChange={e => changeHandler(e)}
-                placeholder={placeholder}
-                type={type}
-                pattern={'[0-9]{3}-[0-9]{3}-[0-9]{4}'}
-                required
-            /> : <input
-                className={cn([stls.container], classNames)}
-                onChange={e => changeHandler(e)}
-                placeholder={placeholder}
-                type={type}
-            />
-        }
-    </>
+    const ref = useMask({ mask: '+7 (___) ___-__-__', replacement: { _: /\d/ } })
+
+    return (
+        <> {
+            type === 'tel' ?
+                <div className={cn([stls.container], classNames)}>
+                    {children}
+                    <input
+                        className={stls.input}
+                        onChange={e => changeHandler(e)}
+                        placeholder={placeholder}
+                        type={type}
+                        autoComplete={autoComplete}
+                        ref={ref}
+                    />
+                </div>
+                :
+                <div className={cn([stls.container], classNames)}>
+                    {children}
+                    <input
+                        className={stls.input}
+                        onChange={e => changeHandler(e)}
+                        placeholder={placeholder}
+                        type={type}
+                        autoComplete={autoComplete}
+                    />
+                </div>
+        } </>
+    )
 }
 
 export default GeneralInput

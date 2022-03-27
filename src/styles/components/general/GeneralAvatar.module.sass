@@ -1,0 +1,42 @@
+@use '../../mixins' as m
+@use '../../config/Colors.module.sass' as c
+
+    
+.container
+    @include m.flex($ai: center)
+
+.circle
+    position: relative
+    display: block
+    border-radius: 50%
+    background-color: #2cc5c5
+    color: #2A2B4E
+    text-transform: uppercase
+    @include m.media(phone)
+        width: 40px
+        height: 40px
+        font-size: 20px
+    @include m.media(tablet, laptop, desktop)
+        width: 48px
+        height: 48px
+        font-size: 28px
+
+.letter
+    position: absolute
+    top: 45%
+    left: 50%
+    transform: translate(-50%, -50%)
+    font-weight: 800
+
+.text
+    font-weight: 700
+    margin-left: 10px
+    color: c.$psi
+    text-transform: capitalize
+    @include m.media(phone)
+        font-size: 16px
+        margin-right: 20px
+    @include m.media(tablet, laptop, desktop)
+        font-size: 20px
+        margin-right: 50px
+  

@@ -2,5 +2,12 @@
 @use '../../config/Colors.module.sass' as c
 
 .container
+    position: relative
     min-height: 100vh
-    background-color: #7474BF
+    height: 100%
+    background-color: c.$alpha
+    background-image: url('../../../assets/main.jpg')
+    background-size: cover
+    background-attachment: fixed
+    background-repeat: no-repeat
+    @include m.flex($fd: column)

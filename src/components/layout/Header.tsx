@@ -5,6 +5,7 @@ import { TypeClassNames } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { IconLogo } from '@components/icons'
 import { useActions, useTypeSelector } from '@utils/index'
+import { GeneralAvatar, GeneralSearchContact } from '@components/general'
 
 
 type TypeHeaderProps = TypeClassNames
@@ -17,7 +18,6 @@ const Header = ({ classNames }: TypeHeaderProps) => {
         logout()
     }
 
-
     return (
         <header className={cn(stls.container, classNames)}>
             <Wrapper classNames={[stls.wrapper]}>
@@ -25,16 +25,21 @@ const Header = ({ classNames }: TypeHeaderProps) => {
                     <IconLogo />
                 </Link>
                 {
-                    auth && <nav className={stls.nav}>
-                        <p className={stls.username}>{userData.email}</p>
-                        <button onClick={ckickHandler} className={stls.btn}>Logout</button>
-                    </nav>
+                    auth && <div className={stls.menu}>
+                        <GeneralSearchContact classNames={stls.search}/>
+                        <nav className={stls.nav}>
+                            <GeneralAvatar classNames={stls.avatar} username={userData.email} />
+                            <button onClick={ckickHandler} className={stls.logout}>Log Out</button>
+                        </nav>
+                    </div>
                 }
             </Wrapper>
-
         </header>
     )
 }
 
 export default Header
+
+
+
 

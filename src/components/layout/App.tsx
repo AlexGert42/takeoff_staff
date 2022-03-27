@@ -1,7 +1,7 @@
 import stls from '@styles/components/layout/App.module.sass'
 import { Route, Routes } from "react-router-dom";
 import { PagesLogin, PagesProfile } from "@components/pages"
-import { Header, Owerlay } from "@components/layout";
+import { Footer, Header, Owerlay } from "@components/layout";
 import { useEffect } from 'react';
 import { useActions, useTypeSelector } from '@utils/index';
 
@@ -26,6 +26,7 @@ const App = () => {
                 <Route path="/" element={<PagesProfile classNames={[stls.fonePicture]} />} />
                 <Route path="/login" element={<PagesLogin classNames={[stls.fonePicture]} />} />
             </Routes>
+            <Footer/>
         </div>
     )
 }

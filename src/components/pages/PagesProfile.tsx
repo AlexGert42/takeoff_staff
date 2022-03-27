@@ -3,7 +3,7 @@ import cn from 'classnames'
 import { TypeClassNames } from "@types/index"
 import { Navigate } from 'react-router-dom'
 import { useActions, useTypeSelector } from '@utils/index'
-import { SectionsListContacts, SectionsSearchContacts, SectionsSetFormContact } from '@components/sections'
+import { SectionsListContacts, SectionsSetFormContact } from '@components/sections'
 import { useEffect } from 'react'
 
 
@@ -28,7 +28,6 @@ const PagesProfile = ({ classNames }: TypePagesProfileProps) => {
 
     return (
         <main className={cn(stls.container, classNames)}>
-            <SectionsSearchContacts/>
             <SectionsSetFormContact/>
             <SectionsListContacts/>
         </main>

@@ -9,9 +9,10 @@ type TypeGeneralInputProps = TypeClassNames & TypeChildren & {
     change?: (e: string) => void
     type: 'text' | 'password' | 'email' | 'tel'
     autoComplete?: 'new-password' | 'off'
+    value?: string
 }
 
-const GeneralInput = ({ classNames, children,  placeholder, change, type, autoComplete }: TypeGeneralInputProps) => {
+const GeneralInput = ({ classNames, children,  placeholder, change, type, autoComplete, value }: TypeGeneralInputProps) => {
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         change && change(e.target.value)
     }
@@ -27,6 +28,7 @@ const GeneralInput = ({ classNames, children,  placeholder, change, type, autoCo
                         onChange={e => changeHandler(e)}
                         placeholder={placeholder}
                         type={type}
+                        value={value}
                         autoComplete={autoComplete}
                         ref={ref}
                     />
@@ -39,6 +41,7 @@ const GeneralInput = ({ classNames, children,  placeholder, change, type, autoCo
                         onChange={e => changeHandler(e)}
                         placeholder={placeholder}
                         type={type}
+                        value={value}
                         autoComplete={autoComplete}
                     />
                 </div>

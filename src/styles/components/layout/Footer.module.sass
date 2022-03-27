@@ -1,0 +1,21 @@
+@use '../../mixins' as m
+@use '../../config/Colors.module.sass' as c
+
+.container
+    position: relative
+    flex: 0 0 auto
+    padding: 45px 0 25px 0
+    background-color: c.$alpha
+
+.wrapper 
+    @include m.flex($jc: space-between, $ai: flex-end)
+
+.icon
+    position: absolute
+    bottom: 22px 
+    left: 50%
+    transform: translateX(-50%)
+
+.copyright
+    font-size: 15px
+    color: c.$psi

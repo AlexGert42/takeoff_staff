@@ -5,7 +5,7 @@ export { default as IconName } from '@components/icons/IconName'
 export { default as IconEmail } from '@components/icons/IconEmail'
 export { default as IconPhone } from '@components/icons/IconPhone'
 export { default as IconPassword } from '@components/icons/IconPassword'
-
-
-
-// export { default as IconEditor } from '@components/icons/IconEditor'
+export { default as IconArrow } from '@components/icons/IconArrow'
+export { default as IconSearch } from '@components/icons/IconSearch'
+export { default as IconSuccess } from '@components/icons/IconSuccess'
+export { default as IconOrganization } from '@components/icons/IconOrganization'

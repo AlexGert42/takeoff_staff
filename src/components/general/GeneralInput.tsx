@@ -2,6 +2,7 @@ import stls from '@styles/components/general/GeneralInput.module.sass'
 import cn from 'classnames'
 import { TypeChildren, TypeClassNames } from "@types/index"
 import { useMask } from 'react-mask-field'
+import { useState } from 'react'
 
 
 type TypeGeneralInputProps = TypeClassNames & TypeChildren & {
@@ -13,7 +14,10 @@ type TypeGeneralInputProps = TypeClassNames & TypeChildren & {
 }
 
 const GeneralInput = ({ classNames, children,  placeholder, change, type, autoComplete, value }: TypeGeneralInputProps) => {
+    const [str, setStr] = useState<string|undefined>(value)
+
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+        setStr(e.target.value)
         change && change(e.target.value)
     }
     const ref = useMask({ mask: '+7 (___) ___-__-__', replacement: { _: /\d/ } })
@@ -28,7 +32,7 @@ const GeneralInput = ({ classNames, children,  placeholder, change, type, autoCo
                         onChange={e => changeHandler(e)}
                         placeholder={placeholder}
                         type={type}
-                        value={value}
+                        value={str}
                         autoComplete={autoComplete}
                         ref={ref}
                     />
@@ -41,7 +45,7 @@ const GeneralInput = ({ classNames, children,  placeholder, change, type, autoCo
                         onChange={e => changeHandler(e)}
                         placeholder={placeholder}
                         type={type}
-                        value={value}
+                        value={str}
                         autoComplete={autoComplete}
                     />
                 </div>

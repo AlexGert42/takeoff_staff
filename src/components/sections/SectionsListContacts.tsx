@@ -5,9 +5,7 @@ import { TypeClassNames, TypeContactData } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { useActions, useTypeSelector } from '@utils/index'
 import { IconCross, IconEditor, IconName, IconOrganization, IconPhone, IconSuccess } from '@components/icons'
-import { GeneralAvatar, GeneralInput, GeneralInputText } from '@components/general'
-import { useMask } from 'react-mask-field'
-
+import { GeneralAvatar, GeneralInput, GeneralSetContact } from '@components/general'
 
 
 interface TypeEditData {
@@ -43,11 +41,10 @@ const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => 
         setEditor(false)
     }
 
-//id === item.id &&
-
     return (
         <section className={cn(stls.container, classNames)}>
             <Wrapper>
+                <GeneralSetContact/>
                 <ul>
                     {
                         contacts && contacts.map((item, idx) => (
@@ -59,6 +56,7 @@ const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => 
                                         placeholder={'Name'}
                                         type={'text'}
                                         change={e => setData({...data, name: e})} 
+                                        value={item.name}
                                         >
                                             <IconName classNames={stls.icon}/>
                                         </GeneralInput>
@@ -74,6 +72,7 @@ const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => 
                                             type={'tel'}
                                             placeholder={'Phone'}
                                             change={e => setData({...data, phone: e})} 
+                                            value={item.phone}
                                             >
                                                 <IconPhone classNames={stls.icon}/>
                                             </GeneralInput>
@@ -82,6 +81,7 @@ const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => 
                                             type={'text'}
                                             placeholder={'Organization'}
                                             change={e => setData({...data, organization: e})} 
+                                            value={item.organization}
                                             >
                                                 <IconOrganization classNames={stls.icon}/>
                                             </GeneralInput>

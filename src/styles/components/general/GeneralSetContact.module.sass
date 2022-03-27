@@ -1,0 +1,57 @@
+@use '../../mixins' as m
+@use '../../config/Colors.module.sass' as c
+
+.container 
+
+.btn
+    position: sticky
+    top: 90%
+    left: 100%
+    z-index: 100
+    bottom: 100px
+    font-size: 30px
+    width: 60px
+    height: 60px
+    background-color: c.$alpha
+    border-radius: 50%
+    opacity: .8
+    transition: all .5s 
+    &:hover
+        opacity: 1
+    &.active
+        transform: rotate(45deg)
+    &::before, &::after
+        content: ''
+        position: absolute
+        background-color: c.$psi
+        top: 50%
+        left: 50%
+        transform: translate(-50%, -50%)
+    &::before
+        width: 30px
+        height: 2px
+    &::after
+        width: 2px
+        height: 30px
+     
+.form
+    position: fixed
+    z-index: 100
+    top: 50%    
+    left: 50%
+    transform: translate(-50%, -50%)
+    @include m.flex($fd: column)
+    &.hide
+        display: none
+    width: 500px
+
+.input
+    @include m.flex($ai: center)
+
+.icon
+    width: 20px
+    margin-right: 10px
+
+.sendBtn
+    color: c.$psi
+    background-color: c.$alpha

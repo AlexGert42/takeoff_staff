@@ -1,21 +1,12 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit"
 
-
-
-
-
-
-
-
 interface TypeInitialState {
     owerlay: boolean
 }
 
-
 const initialState = {
     owerlay: false
 } as TypeInitialState
-
 
 const slice = createSlice({
     name: 'app',
@@ -26,7 +17,6 @@ const slice = createSlice({
         },
     }
 })
-
 
 export const appReducer = slice.reducer
 

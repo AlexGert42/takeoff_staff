@@ -4,7 +4,7 @@ import { TypeClassNames, TypeRegisterData } from "@types/index"
 import { Wrapper } from '@components/layout'
 import { GeneralButton, GeneralInput } from '@components/general'
 import { useState } from 'react'
-import { useActions } from '@utils/index'
+import { useActions, useTypeSelector, valid } from '@utils/index'
 import { IconName, IconEmail, IconPassword, IconPhone } from '@components/icons'
 
 
@@ -14,6 +14,8 @@ type TypeSectionsRegisterFormProps = TypeClassNames & {
 }
 
 const SectionsRegisterForm = ({ classNames, setRegister }: TypeSectionsRegisterFormProps) => {
+    const { errorReg } = useTypeSelector(state => state.auth)
+    const [error, setError] = useState<string>(errorReg)
     const { registerUser } = useActions()
     const [data, setData] = useState<TypeRegisterData & { resetPassword: string }>({
         username: '',
@@ -25,7 +27,17 @@ const SectionsRegisterForm = ({ classNames, setRegister }: TypeSectionsRegisterF
 
     const submitHandler = async (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault()
-        registerUser(data)
+        
+        if (valid(data)) {
+            registerUser({
+                username: data.username,
+                phone: data.phone,
+                email: data.email,
+                password: data.password
+            })
+        } else {
+            setError('Uncorrect data')
+        }
     }
 
     const clickHandler = () => {
@@ -40,7 +52,7 @@ const SectionsRegisterForm = ({ classNames, setRegister }: TypeSectionsRegisterF
                     <GeneralInput classNames={stls.input} autoComplete={'off'} type={'text'} change={e => setData({ ...data, username: e })} placeholder={'Name'}>
                         <IconName classNames={stls.icon} />
                     </GeneralInput>
-                    <GeneralInput classNames={stls.input} autoComplete={'off'} type={'tel'} change={e => setData({ ...data, email: e })} placeholder={'+7 (___) ___ - __ - __'}>
+                    <GeneralInput classNames={stls.input} autoComplete={'off'} type={'tel'} change={e => setData({ ...data, phone: e })} placeholder={'+7 (___) ___ - __ - __'}>
                         <IconPhone classNames={stls.icon}/>
                     </GeneralInput>
                     <GeneralInput classNames={stls.input} autoComplete={'off'} type={'email'} change={e => setData({ ...data, email: e })} placeholder={'Email'}>
@@ -53,6 +65,7 @@ const SectionsRegisterForm = ({ classNames, setRegister }: TypeSectionsRegisterF
                         <IconPassword classNames={stls.icon}/>
                     </GeneralInput>
                     <GeneralButton classNames={stls.btnCreate} type={"submit"}>Create an account</GeneralButton>
+                    {error && <p className={stls.error}>{error}</p>}
                     <span className={stls.decorLine}>Or</span>
                     <GeneralButton classNames={stls.btnLogin} onClick={clickHandler} type={"button"}>To login</GeneralButton>
                 </form>

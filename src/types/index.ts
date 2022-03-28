@@ -5,7 +5,7 @@ export { type default as TypeLoginData} from '@types/TypeLoginData'
 export { type default as TypeContactData} from '@types/TypeContactData'
 export { type default as TypeSetDataContact} from '@types/TypeSetDataContact'
 export { type default as TypeSearchContactData} from '@types/TypeSearchContactData'
-
+export { type default as TypeRegisterValidData} from '@types/TypeRegisterValidData'
 
 
 

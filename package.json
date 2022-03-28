@@ -32,11 +32,11 @@
     "typescript": "^4.4.2"
   },
   "scripts": {
-    "start": "craco start",
+    "dev": "craco start",
     "build": "craco build",
     "test": "craco test",
     "server": "json-server server/db.json -m ./node_modules/json-server-auth -r server/routes.json -p 5000",
-    "dev": "concurrently \"yarn server\" \"yarn start\""
+    "start": "concurrently \"yarn server\" \"yarn dev\""
   },
   "eslintConfig": {
     "extends": [

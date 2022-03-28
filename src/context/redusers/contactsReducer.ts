@@ -1,7 +1,7 @@
 import { TypeContactData, TypeSearchContactData, TypeSetDataContact } from '@types/index';
 import { apiContacts } from "@api/index"
 import { AppRootState } from "@context/store"
-import { createAsyncThunk, createSlice } from "@reduxjs/toolkit"
+import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 
 export const getContacts = createAsyncThunk('auth/getContacts', async (data: string, { getState, dispatch, rejectWithValue }) => {
@@ -80,7 +80,9 @@ const slice = createSlice({
     name: 'contacts',
     initialState: initialState,
     reducers: {
-
+        removeContacts(state, action: PayloadAction) {
+            state.contacts = null
+        },
     },
     extraReducers: (builder) => {
         builder.addCase(getContacts.fulfilled, (state, action) => {
@@ -154,4 +156,4 @@ const slice = createSlice({
 
 export const contactsReducer = slice.reducer
 
-export const { } = slice.actions
+export const { removeContacts } = slice.actions

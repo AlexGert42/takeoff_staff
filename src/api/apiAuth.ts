@@ -1,4 +1,4 @@
-import { TypeLoginData, TypeRegisterData } from '@/types/index';
+import { TypeLoginData, TypeRegisterValidData } from '@/types/index';
 import { authorization } from "@utils/index";
 import axios from "axios";
 import Cookies from 'js-cookie'
@@ -18,7 +18,7 @@ const apiAuth = {
         await this.authUser(dataUser.data.user.id)
         return dataUser
     },
-    async registerUser(data: TypeRegisterData) {
+    async registerUser(data: TypeRegisterValidData) {
         const newUser = await instance.post('register', data)
         Cookies.set('jwt', newUser.data.accessToken)
         localStorage.setItem('user', newUser.data.user.id)

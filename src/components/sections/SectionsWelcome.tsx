@@ -7,8 +7,6 @@ import { Wrapper } from '@components/layout'
 type TypeSectionsLoginFormProps = TypeClassNames
 
 const SectionsWelcome = ({ classNames }: TypeSectionsLoginFormProps) => {
-
-
     return (
         <section className={cn(stls.container, classNames)}>
             <Wrapper>

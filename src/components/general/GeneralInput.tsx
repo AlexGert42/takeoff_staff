@@ -13,8 +13,8 @@ type TypeGeneralInputProps = TypeClassNames & TypeChildren & {
     value?: string
 }
 
-const GeneralInput = ({ classNames, children,  placeholder, change, type, autoComplete, value }: TypeGeneralInputProps) => {
-    const [str, setStr] = useState<string|undefined>(value)
+const GeneralInput = ({ classNames, children,  placeholder, change, type, autoComplete, value = '' }: TypeGeneralInputProps) => {
+    const [str, setStr] = useState<string>(value)
 
     const changeHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
         setStr(e.target.value)

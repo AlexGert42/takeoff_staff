@@ -13,7 +13,7 @@ const Owerlay = ({classNames}: TypeOwerlayProps) => {
         return (
             <div className={cn(stls.container, classNames)}>
               <div className={stls.loader}>
-                    <img src={icon} alt=" " />
+                    <img className={stls.icon} src={icon} alt=" " />
               </div>
             </div>
         )

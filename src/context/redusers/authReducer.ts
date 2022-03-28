@@ -2,7 +2,7 @@ import apiAuth from "@api/apiAuth"
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import Cookies from 'js-cookie'
 import { ActionCreators }  from "@context/index"
-import { TypeRegisterData, TypeLoginData } from '@/types/index'
+import { TypeRegisterValidData, TypeLoginData } from '@/types/index'
 
 
 export const authUser = createAsyncThunk('auth/authUser', async (id: string, { getState, dispatch, rejectWithValue }) => {
@@ -39,11 +39,13 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (data: TypeLog
         return { user: null }
     } catch (error) {
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
-        return rejectWithValue({ errors: error })
+        dispatch(setErrorLogin({value: error.message}))
+        return rejectWithValue({ errors: error})
+         
     }
 })
 
-export const registerUser = createAsyncThunk('auth/registerUser', async (data: TypeRegisterData, { getState, dispatch, rejectWithValue }) => {
+export const registerUser = createAsyncThunk('auth/registerUser', async (data: TypeRegisterValidData, { getState, dispatch, rejectWithValue }) => {
     try {
         dispatch(ActionCreators.ActiveOwerlay({ value: true }))
         const res = await apiAuth.registerUser(data)
@@ -55,20 +57,24 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (data: T
         return { user: null }
     } catch (error) {
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
+        dispatch(setErrorReg({value: error.message}))
         return rejectWithValue({ errors: error })
     }
 })
 
 
 interface TypeInitialState {
-    userData: TypeRegisterData | null
+    userData: TypeRegisterValidData | null
     auth: boolean
-    token: string
+    errorLogin: string
+    errorReg: string
 }
 
 const initialState = {
     userData: null,
-    auth: false
+    auth: false,
+    errorLogin: '',
+    errorReg: ''
 } as TypeInitialState
 
 const slice = createSlice({
@@ -81,6 +87,12 @@ const slice = createSlice({
             state.auth = false
             state.userData = null
         },
+        setErrorLogin(state, action: PayloadAction<{value: string}>) {
+            state.errorLogin = action.payload.value
+        },
+        setErrorReg(state, action: PayloadAction<{value: string}>) {
+            state.errorReg = action.payload.value
+        }
     },
     extraReducers: (builder) => {
         builder.addCase(registerUser.fulfilled, (state, action) => {
@@ -88,6 +100,7 @@ const slice = createSlice({
                 return {
                     ...state,
                     auth: true,
+                    errorReg: '',
                     userData: action.payload.user
                 }
             }
@@ -97,6 +110,7 @@ const slice = createSlice({
                 return {
                     ...state,
                     auth: true,
+                    errorLogin: '',
                     userData: action.payload.user
                 }
             }
@@ -106,6 +120,8 @@ const slice = createSlice({
                 return {
                     ...state,
                     auth: true,
+                    errorLogin: '',
+                    errorReg: '',
                     userData: action.payload.user
                 }
             }
@@ -116,4 +132,4 @@ const slice = createSlice({
 
 export const authReducer = slice.reducer
 
-export const { logout } = slice.actions
+export const { logout, setErrorReg, setErrorLogin } = slice.actions

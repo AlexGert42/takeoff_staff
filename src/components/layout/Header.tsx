@@ -11,11 +11,12 @@ import { GeneralAvatar, GeneralSearchContact } from '@components/general'
 type TypeHeaderProps = TypeClassNames
 
 const Header = ({ classNames }: TypeHeaderProps) => {
-    const { logout } = useActions()
+    const { logout, removeContacts } = useActions()
     const { userData, auth } = useTypeSelector(state => state.auth)
 
     const ckickHandler = () => {
         logout()
+        removeContacts()
     }
 
     return (
@@ -28,7 +29,7 @@ const Header = ({ classNames }: TypeHeaderProps) => {
                     auth && <div className={stls.menu}>
                         <GeneralSearchContact classNames={stls.search}/>
                         <nav className={stls.nav}>
-                            <GeneralAvatar classNames={stls.avatar} username={userData.email} />
+                            <GeneralAvatar classNames={stls.avatar} username={userData.username} />
                             <button onClick={ckickHandler} className={stls.logout}>Log Out</button>
                         </nav>
                     </div>

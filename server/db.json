@@ -1,90 +1,62 @@
 {
   "users": [
     {
-      "email": "alex.gert1812@gmail.com",
-      "password": "$2a$10$QdCbg1gzKr1JJkKc82KB9OHjgDtu7h2K4A2E/4aXpe1uqE9ca/BGm",
-      "username": "wwe",
-      "phone": "ew",
+      "email": "root@gmail.com",
+      "password": "$2a$10$4RHH8w9IMJg5/dG3xWf4b.tY7/iSWn8G8qIwOXK2VCGBkd2s7q2Nq",
+      "username": "root",
+      "phone": "+7 (999) 999-99-99",
+      "id": 1
+    },
+    {
+      "email": "root2@gmail.com",
+      "password": "$2a$10$IRxafkAu6FCWy06cyxyuReTBrfg7Zy34IJt4DQPTMp65cq1HV.IRy",
+      "username": "root2",
+      "phone": "+7 (999) 999-99-99",
       "id": 2
-    },
-    {
-      "email": "alex.111@gmail.com",
-      "password": "$2a$10$Nd7MAcY58MlKPopFM3530O3KzGzebTuqMiBj5ddh0Kl7mj3Ui1vWi",
-      "username": "11",
-      "phone": "11",
-      "id": 3
-    },
-    {
-      "email": "alex.3434@gmail.com",
-      "password": "$2a$10$tI.Y0M94REiI1fZSr0nEMuygUfMKArOEqNKtjrW7Lk0K4Mt0XP52a",
-      "username": "111",
-      "phone": "111",
-      "id": 4
-    },
-    {
-      "email": "46436464.gert1812@gmail.com",
-      "password": "$2a$10$zZXB4MHSEX3TiNKo/e1xEebeZTMLyRiHg4DJ4siqOqVOH7.1e/dQ6",
-      "username": "436",
-      "phone": "4364364",
-      "id": 5
     }
   ],
   "contacts": [
     {
-      "name": "fffdsfdsf",
-      "phone": "dsfdsfdsfdsf",
-      "organization": "dsfdsfsdf",
-      "userId": "3",
+      "name": "human 1",
+      "phone": "+7 (999) 999-99-99",
+      "organization": "organization 1",
+      "userId": "1",
+      "id": 1
+    },
+    {
+      "name": "human 2",
+      "phone": "+7 (999) 999-99-99",
+      "organization": "organization 2",
+      "userId": "1",
+      "id": 2
+    },
+    {
+      "name": "human 3",
+      "phone": "+7 (999) 999-99-99",
+      "organization": "organization 3",
+      "userId": "1",
+      "id": 3
+    },
+    {
+      "name": "human 4",
+      "phone": "+7 (999) 999-99-99",
+      "organization": "organization 4",
+      "userId": "1",
+      "id": 4
+    },
+    {
+      "name": "human 5",
+      "phone": "+7 (999) 999-99-99",
+      "organization": "organization 5",
+      "userId": "1",
       "id": 5
     },
     {
-      "name": "sdasd",
-      "phone": "sadsad",
-      "organization": "dsadsad",
-      "userId": "3",
-      "id": 7
-    },
-    {
-      "name": "dfdsf",
-      "phone": "dfdsf",
-      "organization": "dsfdsf",
-      "userId": "4",
-      "id": 9
-    },
-    {
-      "name": "",
-      "phone": "+7 (231) 314-21-42",
-      "organization": "dfsfdfdsfsf",
+      "name": "human 1",
+      "phone": "+7 (888) 888-88-88",
+      "organization": "organization 1",
       "userId": "2",
-      "id": 14
-    },
-    {
-      "name": "sASAsAS",
-      "phone": "SAsASasaS",
-      "organization": "asaSAsaS",
-      "userId": "2",
-      "id": 33
-    },
-    {
-      "name": "sASAsAS",
-      "phone": "SAsASasaS",
-      "organization": "asaSAsaS",
-      "userId": "2",
-      "id": 34
-    },
-    {
-      "name": "34324324324",
-      "phone": "+7 (334) 324-32-43",
-      "organization": "343243243243",
-      "userId": "2",
-      "id": 35
-    },
-    {
-      "name": "34324324324",
-      "phone": "+7 (334) 324-32-43",
-      "organization": "343243243243",
-      "userId": "2",
-      "id": 36
+      "id": 6
     }
   ]
 }

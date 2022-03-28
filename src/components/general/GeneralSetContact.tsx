@@ -1,15 +1,13 @@
 import stls from '@styles/components/general/GeneralSetContact.module.sass'
 import cn from 'classnames'
-import { TypeClassNames, TypeSetDataContact } from "@types/index"
+import { TypeSetDataContact } from "@types/index"
 import { useState } from 'react'
 import { useActions } from '@utils/index'
 import { IconName, IconOrganization, IconPhone } from '@components/icons'
 import { GeneralButton, GeneralInput } from '@components/general'
 
 
-type TypeGeneralSetContactProps = TypeClassNames
-
-const GeneralSetContact = ({ classNames }: TypeGeneralSetContactProps) => {
+const GeneralSetContact = () => {
     const { setContact } = useActions()
     const [hide, setHide] = useState<boolean>(true)
     const [data, setData] = useState<TypeSetDataContact>({

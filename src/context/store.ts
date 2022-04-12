@@ -13,9 +13,11 @@ const rootReducer = combineReducers({
    
 })
 
-export const store = configureStore({
+const store = configureStore({
     reducer: rootReducer,
     middleware: getDefaultMiddleware => getDefaultMiddleware().prepend(ThunkMiddleware)
 })
 
 export type AppRootState = ReturnType<typeof rootReducer>
+
+export default store

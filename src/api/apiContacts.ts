@@ -1,7 +1,6 @@
-import { store } from '@context/';
-import { TypeContactData, TypeSearchContactData, TypeSetDataContact } from '@types/index';
-import { authorization } from "@utils/index";
-import axios from "axios";
+import { TypeContactData, TypeSearchContactData, TypeSetDataContact } from '@type/index'
+import { authorization } from "@utils/index"
+import axios from "axios"
 
 
 const instance = axios.create({
@@ -13,7 +12,7 @@ type TypeSetContactData = TypeSetDataContact & {
 }
 
 const apiContacts = {
-    getContacts(id: string) {
+    getContacts(id: number) {
         return instance.get(`contacts/?userId=${id}`, authorization())
     },
     deleteContact(id: number) {
@@ -25,7 +24,7 @@ const apiContacts = {
     setContact(data: TypeSetContactData) {
         return instance.post('contacts/', data, authorization())
     },
-    searchContact(data: TypeSearchContactData, userId: string) {
+    searchContact(data: TypeSearchContactData, userId: number) {
         return instance.get(`contacts?userId=${userId}&${data.currentSelect}_like=${data.data}`, authorization())
     }
 }

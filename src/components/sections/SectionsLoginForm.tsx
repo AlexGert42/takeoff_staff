@@ -1,6 +1,6 @@
 import stls from '@styles/components/sections/SectionsLoginForm.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 import { Wrapper } from '@components/layout'
 import { GeneralButton, GeneralInput } from '@components/general'
 import { useState } from 'react'
@@ -39,16 +39,16 @@ const SectionsLoginForm = ({ classNames, setRegister }: TypeSectionsLoginFormPro
         <section className={cn(stls.container, classNames)}>
             <Wrapper classNames={[stls.wrapper]}>
                 <form className={stls.form} action="POST" onSubmit={submitHandler}>
-                    <GeneralInput classNames={stls.input} type={'email'} change={e => setData({...data, email: e})}>
-                        <IconEmail classNames={stls.icon}/>
+                    <GeneralInput classNames={[stls.input]} type={'email'} change={e => setData({...data, email: e})}>
+                        <IconEmail classNames={[stls.icon]}/>
                     </GeneralInput>
-                    <GeneralInput classNames={stls.input} type={'password'} change={e => setData({...data, password: e})}>
-                        <IconPassword classNames={stls.icon}/>
+                    <GeneralInput classNames={[stls.input]} type={'password'} change={e => setData({...data, password: e})}>
+                        <IconPassword classNames={[stls.icon]}/>
                     </GeneralInput>
-                    <GeneralButton classNames={stls.btnSing} type="submit">Sign in</GeneralButton> 
+                    <GeneralButton classNames={[stls.btnSing]} type="submit">Sign in</GeneralButton> 
                     {errorLogin && <p className={stls.error}>{errorLogin}</p>}
                     <span className={stls.decorLine}>Or</span>
-                    <GeneralButton classNames={stls.btnCreate} type="button" onClick={clickHandler}>Create an Account</GeneralButton>
+                    <GeneralButton classNames={[stls.btnCreate]} type="button" onClick={clickHandler}>Create an Account</GeneralButton>
                 </form>
             </Wrapper>
         </section>

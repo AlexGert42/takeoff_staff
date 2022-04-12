@@ -1,6 +1,6 @@
 import stls from '@styles/components/layout/Footer.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 import { Wrapper } from '@components/layout'
 import { IconLogo } from '@components/icons'
 
@@ -12,7 +12,7 @@ const Footer = ({ classNames }: TypeFooterProps) => {
 
     return (
         <footer className={cn(stls.container, classNames)}>
-            <Wrapper classNames={stls.wrapper}>
+            <Wrapper classNames={[stls.wrapper]}>
                 <p className={stls.copyright}>
                 {'LoGo.com'} {new Date().getFullYear()} &copy; 
                 </p>

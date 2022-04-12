@@ -1,6 +1,7 @@
+// import stls from '@styles/components/general/GeneralInput.module.sass'
 import stls from '@styles/components/general/GeneralInput.module.sass'
 import cn from 'classnames'
-import { TypeChildren, TypeClassNames } from "@types/index"
+import { TypeChildren, TypeClassNames } from "@type/index"
 import { useMask } from 'react-mask-field'
 import { useState } from 'react'
 

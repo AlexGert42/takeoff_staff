@@ -1,5 +1,5 @@
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 
 
 type TypeIconSearchProps = TypeClassNames

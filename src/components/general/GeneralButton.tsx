@@ -1,6 +1,6 @@
 import stls from '@styles/components/general/GeneralButton.module.sass'
 import cn from 'classnames'
-import { TypeChildren, TypeClassNames } from "@types/index"
+import { TypeChildren, TypeClassNames } from "@type/index"
 
 
 type TypeGeneralInputProps = TypeClassNames & TypeChildren & React.ComponentPropsWithoutRef<"button">

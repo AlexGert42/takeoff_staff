@@ -1,16 +1,22 @@
 import apiAuth from "@api/apiAuth"
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 import Cookies from 'js-cookie'
-import { ActionCreators }  from "@context/index"
-import { TypeRegisterValidData, TypeLoginData } from '@/types/index'
+import { ActionCreators } from "@context/index"
+import { TypeRegisterValidData, TypeLoginData } from '@type/index'
 
+type TypeUserData = {
+    email: string
+    id: number
+    phone: string
+    username: string
+}
 
 export const authUser = createAsyncThunk('auth/authUser', async (id: string, { getState, dispatch, rejectWithValue }) => {
     try {
         dispatch(ActionCreators.ActiveOwerlay({ value: true }))
         const res = await apiAuth.authUser(id)
         if (res.status === 200) {
-            const data = {
+            const data: TypeUserData = {
                 email: res.data.email,
                 id: res.data.id,
                 phone: res.data.phone,
@@ -20,7 +26,6 @@ export const authUser = createAsyncThunk('auth/authUser', async (id: string, { g
             return { user: data }
         }
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
-        return { user: null }
     } catch (error) {
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
         return rejectWithValue({ errors: error })
@@ -36,12 +41,10 @@ export const loginUser = createAsyncThunk('auth/loginUser', async (data: TypeLog
             return { user: res.data.user }
         }
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
-        return { user: null }
-    } catch (error) {
+    } catch (error: Error | any) {
+        dispatch(setErrorLogin({ value: error.message  }))
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
-        dispatch(setErrorLogin({value: error.message}))
-        return rejectWithValue({ errors: error})
-         
+        return rejectWithValue({ errors: error })
     }
 })
 
@@ -54,24 +57,28 @@ export const registerUser = createAsyncThunk('auth/registerUser', async (data: T
             return { user: res.data.user }
         }
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
-        return { user: null }
-    } catch (error) {
+    } catch (error: Error | any) {
         dispatch(ActionCreators.ActiveOwerlay({ value: false }))
-        dispatch(setErrorReg({value: error.message}))
+        dispatch(setErrorReg({ value: error.message }))
         return rejectWithValue({ errors: error })
     }
 })
 
 
 interface TypeInitialState {
-    userData: TypeRegisterValidData | null
+    userData: TypeUserData 
     auth: boolean
     errorLogin: string
     errorReg: string
 }
 
 const initialState = {
-    userData: null,
+    userData: {
+        email: '',
+        id: 0,
+        phone: '',
+        username: ''
+    },
     auth: false,
     errorLogin: '',
     errorReg: ''
@@ -85,18 +92,23 @@ const slice = createSlice({
             Cookies.remove('jwt')
             localStorage.removeItem('user')
             state.auth = false
-            state.userData = null
+            state.userData = {
+                email: '',
+                id: 0,
+                phone: '',
+                username: ''
+            }
         },
-        setErrorLogin(state, action: PayloadAction<{value: string}>) {
+        setErrorLogin(state, action: PayloadAction<{ value: string }>) {
             state.errorLogin = action.payload.value
         },
-        setErrorReg(state, action: PayloadAction<{value: string}>) {
+        setErrorReg(state, action: PayloadAction<{ value: string }>) {
             state.errorReg = action.payload.value
         }
     },
     extraReducers: (builder) => {
         builder.addCase(registerUser.fulfilled, (state, action) => {
-            if (action.payload.user) {
+            if (action.payload?.user) {
                 return {
                     ...state,
                     auth: true,
@@ -106,7 +118,7 @@ const slice = createSlice({
             }
         });
         builder.addCase(loginUser.fulfilled, (state, action) => {
-            if (action.payload.user) {
+            if (action.payload?.user) {
                 return {
                     ...state,
                     auth: true,
@@ -116,7 +128,7 @@ const slice = createSlice({
             }
         });
         builder.addCase(authUser.fulfilled, (state, action) => {
-            if (action.payload.user) {
+            if (action.payload?.user) {
                 return {
                     ...state,
                     auth: true,
@@ -124,7 +136,7 @@ const slice = createSlice({
                     errorReg: '',
                     userData: action.payload.user
                 }
-            }
+            }  
         });
     }
 })

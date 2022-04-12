@@ -1,6 +1,6 @@
 import stls from '@styles/components/pages/PagesProfile.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 import { Navigate } from 'react-router-dom'
 import { useActions, useTypeSelector } from '@utils/index'
 import { SectionsListContacts } from '@components/sections'
@@ -14,7 +14,7 @@ const PagesProfile = ({ classNames }: TypePagesProfileProps) => {
     const { getContacts } = useActions()
 
     useEffect(() => {
-        if (userData) {
+        if (auth) {
             getContacts(userData.id)
         } 
     }, [])

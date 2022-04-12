@@ -1,6 +1,6 @@
 import stls from '@styles/components/general/GeneralAvatar.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 
 
 

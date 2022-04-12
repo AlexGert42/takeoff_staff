@@ -1,7 +1,7 @@
 import stls from '@styles/components/layout/Header.module.sass'
 import { Link } from "react-router-dom"
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 import { Wrapper } from '@components/layout'
 import { IconLogo } from '@components/icons'
 import { useActions, useTypeSelector } from '@utils/index'
@@ -27,9 +27,9 @@ const Header = ({ classNames }: TypeHeaderProps) => {
                 </Link>
                 {
                     auth && <div className={stls.menu}>
-                        <GeneralSearchContact classNames={stls.search}/>
+                        <GeneralSearchContact classNames={[stls.search]}/>
                         <nav className={stls.nav}>
-                            <GeneralAvatar classNames={stls.avatar} username={userData.username} />
+                            <GeneralAvatar classNames={[stls.avatar]} username={userData.username} />
                             <button onClick={ckickHandler} className={stls.logout}>Log Out</button>
                         </nav>
                     </div>

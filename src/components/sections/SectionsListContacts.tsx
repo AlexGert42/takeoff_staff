@@ -1,7 +1,7 @@
 import stls from '@styles/components/sections/SectionsListContacts.module.sass'
 import { useState } from 'react'
 import cn from 'classnames'
-import { TypeClassNames, TypeContactData } from "@types/index"
+import { TypeClassNames, TypeContactData } from "@type/index"
 import { Wrapper } from '@components/layout'
 import { useActions, useTypeSelector } from '@utils/index'
 import { IconCross, IconEditor, IconName, IconOrganization, IconPhone, IconSuccess } from '@components/icons'
@@ -52,44 +52,44 @@ const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => 
                                 {
                                     id === item.id && editor ?
                                         <GeneralInput
-                                            classNames={stls.input}
+                                            classNames={[stls.input]}
                                             placeholder={'Name'}
                                             type={'text'}
                                             change={e => setName(e)}
                                             value={item.name}
                                         >
-                                            <IconName classNames={stls.icon} />
+                                            <IconName classNames={[stls.icon]} />
                                         </GeneralInput>
                                         :
-                                        <GeneralAvatar classNames={stls.username} username={item.name} />
+                                        <GeneralAvatar classNames={[stls.username]} username={item.name} />
                                 }
                                 <div className={stls.details}>
                                     {
                                         id === item.id && editor ?
                                             <>
                                                 <GeneralInput
-                                                    classNames={stls.input}
+                                                    classNames={[stls.input]}
                                                     type={'tel'}
                                                     placeholder={'Phone'}
                                                     change={e => setPhone(e)}
                                                     value={item.phone}
                                                 >
-                                                    <IconPhone classNames={stls.icon} />
+                                                    <IconPhone classNames={[stls.icon]} />
                                                 </GeneralInput>
                                                 <GeneralInput
-                                                    classNames={stls.input}
+                                                    classNames={[stls.input]}
                                                     type={'text'}
                                                     placeholder={'Organization'}
                                                     change={e => setOrganization(e)}
                                                     value={item.organization}
                                                 >
-                                                    <IconOrganization classNames={stls.icon} />
+                                                    <IconOrganization classNames={[stls.icon]} />
                                                 </GeneralInput>
                                             </>
                                             :
                                             <>
-                                                <a className={stls.textBlock} href={`tel:${item.phone}`}><IconPhone classNames={stls.icon} />{item.phone}</a>
-                                                <div className={stls.textBlock}><IconOrganization classNames={stls.icon} />{item.organization}</div>
+                                                <a className={stls.textBlock} href={`tel:${item.phone}`}><IconPhone classNames={[stls.icon]} />{item.phone}</a>
+                                                <div className={stls.textBlock}><IconOrganization classNames={[stls.icon]} />{item.organization}</div>
                                             </>
                                     }
                                     <div className={stls.editor}>
@@ -97,19 +97,19 @@ const SectionsListContacts = ({ classNames }: TypeSectionsListContactsProps) => 
                                             id === item.id && editor ?
                                                 <>
                                                     <button className={stls.btn} onClick={() => clickHandlerSuccess(item)}>
-                                                        <IconSuccess classNames={stls.icon} />
+                                                        <IconSuccess classNames={[stls.icon]} />
                                                     </button>
                                                     <button className={stls.btn} onClick={() => clickBack()}>
-                                                        <IconCross classNames={stls.icon} />
+                                                        <IconCross classNames={[stls.icon]} />
                                                     </button>
                                                 </>
                                                 :
                                                 <>
                                                     <button className={stls.btn} onClick={() => clickHandlerRemove(item.id)}>
-                                                        <IconCross classNames={stls.icon} />
+                                                        <IconCross classNames={[stls.icon]} />
                                                     </button>
                                                     <button className={stls.btn} onClick={() => clickHandlerEditor(item.id)}>
-                                                        <IconEditor classNames={stls.icon} />
+                                                        <IconEditor classNames={[stls.icon]} />
                                                     </button>
                                                 </>
                                         }

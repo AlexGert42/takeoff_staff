@@ -1,8 +1,7 @@
 import stls from '@styles/components/general/GeneralSearchContact.module.sass'
 import cn from 'classnames'
 import React, { useState } from 'react'
-import { TypeClassNames } from "@types/index"
-import { Wrapper } from '@components/layout'
+import { TypeClassNames } from "@type/index"
 import { useActions } from '@utils/index'
 import { IconArrow, IconSearch } from '@components/icons'
 
@@ -46,9 +45,9 @@ const GeneralSearchContact = ({ classNames }: TypeGeneralSearchContactProps) => 
                     <li className={stls.option} onClick={() => clickHandlerOption('Phone')}>Phone</li>
                     <li className={stls.option} onClick={() => clickHandlerOption('Organization')}>Organization</li>
                 </ul>
-                <IconSearch classNames={stls.iconSerach} />
+                <IconSearch classNames={[stls.iconSerach]} />
                 <input className={stls.input} type={'text'} onChange={e => setData(e.target.value)} placeholder={currentSelect} />
-                <button className={stls.btn} type={'button'} onClick={clickHandler}><IconArrow classNames={stls.iconArrow} /></button>
+                <button className={stls.btn} type={'button'} onClick={clickHandler}><IconArrow classNames={[stls.iconArrow]} /></button>
             </form>
         </section>
     )

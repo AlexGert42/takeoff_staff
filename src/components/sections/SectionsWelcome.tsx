@@ -1,6 +1,6 @@
 import stls from '@styles/components/sections/SectionsWelcome.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 import { Wrapper } from '@components/layout'
 
 

@@ -1,10 +1,10 @@
-import { TypeContactData, TypeSearchContactData, TypeSetDataContact } from '@types/index';
+import { TypeContactData, TypeSearchContactData, TypeSetDataContact } from '@type/index';
 import { apiContacts } from "@api/index"
 import { AppRootState } from "@context/store"
 import { createAsyncThunk, createSlice, PayloadAction } from "@reduxjs/toolkit"
 
 
-export const getContacts = createAsyncThunk('auth/getContacts', async (data: string, { getState, dispatch, rejectWithValue }) => {
+export const getContacts = createAsyncThunk('auth/getContacts', async (data: number, { getState, dispatch, rejectWithValue }) => {
     try { 
         const res = await apiContacts.getContacts(data)
         if (res.status === 200) {
@@ -55,9 +55,9 @@ export const setContact = createAsyncThunk('auth/setContact', async (data: TypeS
 })
 
 export const searchContact = createAsyncThunk('auth/searchContact', async (data: TypeSearchContactData, { getState, dispatch, rejectWithValue }) => {
-    const state = getState() as AppRootState
+    const { auth } = getState() as AppRootState
     try {
-        const res = await apiContacts.searchContact(data, state.auth.userData.id)
+        const res = await apiContacts.searchContact(data, auth.userData.id)
         if (res.status === 200) {
             return {data: res.data}
         }

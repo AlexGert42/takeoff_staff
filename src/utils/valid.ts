@@ -1,4 +1,4 @@
-import { TypeRegisterData } from '@/types/index';
+import { TypeRegisterData } from '@type/index';
 
 const valid = (data: TypeRegisterData) => {
     if (

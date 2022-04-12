@@ -1,4 +1,4 @@
-import { TypeLoginData, TypeRegisterValidData } from '@/types/index';
+import { TypeLoginData, TypeRegisterValidData } from '@type/index';
 import { authorization } from "@utils/index";
 import axios from "axios";
 import Cookies from 'js-cookie'

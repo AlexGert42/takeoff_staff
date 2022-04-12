@@ -1,6 +1,6 @@
 import stls from '@styles/components/layout/Owerlay.module.sass'
 import cn from 'classnames'
-import { TypeClassNames } from "@types/index"
+import { TypeClassNames } from "@type/index"
 import icon from '@assets/loader.gif'
 import { useTypeSelector } from '@utils/index'
 
